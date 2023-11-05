@@ -3,8 +3,6 @@ import mongoose from "mongoose";
 mongoose.set("strictQuery", false)
 const mongourl = "mongodb://localhost:27017/library"
 
-main()
-
 
 async function main() {
     console.log("trying to connect to database")

@@ -1,9 +1,10 @@
-import Author from "../models/authorModel"
+import Author from "../models/authorModel.js"
 import asyncHandler from "express-async-handler"
 
 
 export const GetAllAuthors =asyncHandler(async (req, res, next)=>{
-    res.send("NOT IMPLEMENTED: Author list")
+    const Authors = await Author.find({})
+    res.status(200).json(Authors)
 })
 
 export const GetSingleAuthor = asyncHandler(async (req, res, next)=>{

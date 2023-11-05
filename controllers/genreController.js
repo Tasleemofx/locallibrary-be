@@ -1,9 +1,10 @@
-import Genre from "../models/genreModel"
+import Genre from "../models/genreModel.js"
 import asyncHandler from "express-async-handler"
 
 
 export const GetAllGenres = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Genre list")
+    const Genres = await Genre.find({})
+    res.status(200).json(Genres)
 })
 
 export const GetSingleGenre = asyncHandler(async (req, res, next) => {

@@ -1,9 +1,11 @@
-import BookInstance from "../models/bookInstance"
+import BookInstance from "../models/bookInstance.js"
 import asyncHandler from "express-async-handler"
 
 
 export const GetAllBookInstances = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: BookInstance list")
+    const BookInstances = await BookInstance.find({})
+
+    res.status(200).json(BookInstances)
 })
 
 export const GetSingleBookInstance = asyncHandler(async (req, res, next) => {

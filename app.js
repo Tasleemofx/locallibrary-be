@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import indexRouter from "./routes/index.js"
 import usersRouter from "./routes/users.js"
+import catalogRouter from "./routes/catalog.js"
 import main from "./db/connectmongo.js"
 import { fileURLToPath } from 'url';
 
@@ -22,7 +23,8 @@ app.set('view engine', 'pug');
 
 // connect to db
 
-app.use(main)
+main()
+
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -31,11 +33,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use("/catalog", catalogRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
 
 // error handler
 app.use(function(err, req, res, next) {

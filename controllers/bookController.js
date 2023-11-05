@@ -1,13 +1,15 @@
-import Book from "../models/bookModel"
+import Book from "../models/bookModel.js"
 import asyncHandler from "express-async-handler"
 
 
 export const BookIndex = asyncHandler((req, res, next)=>{
-    res.send("NOT IMPLEMENT: Book index")
+    res.send("NOT IMPLEMENTED: Book index")
 })
 
 export const GetAllBooks = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Book list")
+    const Books = await Book.find({})
+    res.status(200).json(Books)
+    
 })
 
 export const GetSingleBook = asyncHandler(async (req, res, next) => {
